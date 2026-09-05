@@ -1,0 +1,42 @@
+# Example NexusConfig - copy to <data_dir>/config.yaml to override defaults.
+# Every value here is versioned by the UpgradeManager; changing it in
+# production should go through propose -> evaluate -> approve.
+version: "0.1.0"
+model_checkpoint: heuristic-local        # e.g. gpt-4o-mini, claude-sonnet-4-5, llama-3-70b
+prompt_library_version: "1"
+retrieval:
+  relevance: 0.6
+  recency: 0.2
+  importance: 0.2
+  recency_half_life_hours: 72
+working_memory:
+  token_budget: 2000
+  keep_last_turns: 6
+  summary_ratio: 0.25
+reasoning:
+  system1_min_skill_success_rate: 0.7
+  system1_min_skill_attempts: 2
+  system1_min_trigger_score: 0.5
+  risk_aversion: 0.5
+  max_options: 4
+affect:
+  decay: 0.15
+  baseline_confidence: 0.6
+  baseline_urgency: 0.2
+  baseline_frustration: 0.1
+  baseline_rapport: 0.5
+  approval_threshold_boost: 0.15
+execution:
+  max_retries: 2
+  max_replans: 2
+  step_timeout_s: 20
+learning:
+  reflect_every_n_cycles: 10
+  min_evidence_for_lesson: 3
+  retrieval_weight_step: 0.05
+  retrieval_weight_bounds: [0.05, 0.8]
+governance:
+  high_stakes_tools: [send_email, make_payment, delete_data, deploy, shell]
+  denied_tools: [shell]
+  max_payment_without_approval: 0
+  content_policy_blocklist: ["build a bomb", "make a weapon", "synthesize a nerve agent", "credit card numbers of", "hack into"]

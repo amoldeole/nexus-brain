@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+# runtime data written by Brain(data_dir=...) / NEXUS_DATA_DIR
+data/
+*.jsonl
